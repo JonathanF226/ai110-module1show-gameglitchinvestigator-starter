@@ -1,6 +1,9 @@
 import random
 import streamlit as st
 
+# FIX (agent mode): Refactored check_guess out of app.py into logic_utils.py.
+from logic_utils import check_guess, new_game_state
+
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
@@ -27,24 +30,6 @@ def parse_guess(raw: str):
         return False, None, "That is not a number."
 
     return True, value, None
-
-
-def check_guess(guess, secret):
-    if guess == secret:
-        return "Win", "🎉 Correct!"
-
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -132,8 +117,8 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    # Game logic lives in logic_utils.new_game_state; UI just applies it.
+    st.session_state.update(new_game_state(secret=random.randint(low, high)))
     st.success("New game started.")
     st.rerun()
 
@@ -155,12 +140,9 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
-
-        outcome, message = check_guess(guess_int, secret)
+        # FIX (agent mode): Removed the even-attempt str(secret) glitch that
+        # corrupted the comparison; always pass the secret as an int.
+        outcome, message = check_guess(guess_int, st.session_state.secret)
 
         if show_hint:
             st.warning(message)
