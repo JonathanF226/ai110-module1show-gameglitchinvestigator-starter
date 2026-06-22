@@ -25,19 +25,25 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [X] Describe the game's purpose.
+This is a guessing game. You need to guess the secret number and you will be provided hints if you want. You get a limited number of tries.
+- [X] Detail which bugs you found.
+There was a bug where the "New Game" buttton would not restart the game. The "Go Higher and Lower" hints were misleasing. This casued user to keep guessing incorrectly. 
+- [X] Explain what fixes you applied.
+With the help of AI I was able to fixed both the bugs mentioned above. For example, we were able to compare secret number with guess as ints. Before it would do a string. 
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User picks a difficulty 
+2. User enters a guess of 70
+3. Game returns "Go Lower"
+4. User enters 10
+5. Game returns "Go Higher"
+6. User enters 23
+7. Game returns "Correct!"
+8. User can start new game by pressing "New Game"
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 

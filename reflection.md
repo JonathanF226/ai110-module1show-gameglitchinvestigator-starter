@@ -49,6 +49,7 @@ The AI helped me understand that it can miss stuff like edge cases. I tested it 
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+Streamlit kind of refreshes itself everytime you interact with it. 
 
 ---
 
@@ -56,5 +57,8 @@ The AI helped me understand that it can miss stuff like edge cases. I tested it 
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+I like the idea of focusing on one bug at a time. This helps both the AI and I focus on what is in hand.
 - What is one thing you would do differently next time you work with AI on a coding task?
+Not sure if I would do anything differently. I liked the idea of going around and seeing where the potential bug is in the code then having the AI confirm or deny then help fix the bug.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+I think for the most part the AI code gave the illusion that it was working. Once I was on the site for a while looking for bugs I got to see a lot.
